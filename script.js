@@ -6,12 +6,12 @@ var myChart = new Chart(ctx, {
 
 
 
-        labels: ['Jonas','Petras'],
+        labels: ['Jonas'],
         datasets: [{
-            label: 'Amzius',
-            data: ['25','30'],
+            label: 'Atlyginimas',
+            data: [],
             backgroundColor: [
-                'yellow', 'green'
+                
                 
             ],
             borderColor: [ 
@@ -22,14 +22,14 @@ var myChart = new Chart(ctx, {
 
         },
        {
-            label: 'Atlyginimas',
-            data: ['400','500'],
+            label: 'Amzius',
+            data: [],
             backgroundColor: [
-                'red'
+               
                 
             ],
             borderColor: [
-               'green'
+               
             ],
             borderWidth: 1,
             type:'line'
@@ -49,8 +49,13 @@ var myChart = new Chart(ctx, {
 });
 function addNew(){
     myChart.data.labels.push(document.getElementById('name').value);
-    myChart.data.datasets[0].data.push(document.getElementById('age').value);
-    myChart.data.datasets[1].data.push(document.getElementById('salary').value);
+    myChart.data.datasets[0].data.push(document.getElementById('salary').value);
+    myChart.data.datasets[1].data.push(document.getElementById('age').value);
+
+    if (document.getElementById('salary').value > 300) {
+         myChart.data.datasets[0].backgroundColor.push('green');
+    }else { myChart.data.datasets[0].backgroundColor.push('red');
+}
     myChart.update();
 }
 
@@ -65,10 +70,17 @@ function chartRemoveLast(){
 
 function chartClear (){
  myChart.data.labels = [];
-    myChart.data.datasets[0].data = [];
-    myChart.data.datasets[1].data = [];
+ myChart.data.datasets[0].data = [];
+ myChart.data.datasets[1].data = [];
  myChart.update();
 
 }
 
 
+// function changeColor (){
+//     if (myChart.data.datasets[1].data.push(document.getElementById('salary').value) >= 300) {
+//          myChart.data.datasets[1].backgroundColor = 'violet';
+//     }else {
+//         myChart.data.datasets[1].backgroundColor = 'red';
+//     }
+// }
